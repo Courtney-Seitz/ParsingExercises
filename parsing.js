@@ -449,11 +449,11 @@ function commonNames(species) {
 }
 
 function displayDataTotal() {
-return $('#total').append(`<h2>Total: ${species.meta.total}</h2>`);
+    return $('#total').html(`<h2>Total: ${species.meta.total}</h2>`);
 }
 
 function displayNextLast() {
-    return $('#next-last-list').append(`<li><h2>Next: ${species.links.next}</h2>
+    return $('#next-last-list').html(`<li><h2>Next: ${species.links.next}</h2>
     <h2>Last: ${species.links.last}</h2></li>`);
     }
 

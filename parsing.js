@@ -439,14 +439,27 @@ const species = {
 * Display next and last links.
 */
 
+// 'https://trefle.io/api/v1/plants?token=CUV2-Dj-jZUlWEgcMsK0fxuMSjTuKEydhW-C4J0k5CA&page=2'
+// 'https://trefle.io/api/v1/plants?token=CUV2-Dj-jZUlWEgcMsK0fxuMSjTuKEydhW-C4J0k5CA&page=20348'
 
+
+
+// function commonNames(species) {
+//     for (let i = 0; i < species.data.length; i++) {
+//         $('#results-list').html(`<li>
+//         <p><strong>Common Name: </strong>${species.data[i].common_name}</p></li>`);
+//     };
+// }
 
 function commonNames(species) {
-    for (let i = 0; i < species.data.length; i++) {
-        $('#results-list').append(`<li>
-        <p><strong>Common Name: </strong>${species.data[i].common_name}</p></li>`);
-    };
-}
+    $.each(species.data, function(i, el) {
+        $('#results-list').append(`<li><p><strong>Common Name: </strong>${species.data[i].common_name}</p></li>`);
+        
+        console.log(el.common_name);
+        console.log(species.data[i].common_name);
+        
+        })
+    }
 
 function displayDataTotal() {
     return $('#total').html(`<h2>Total: ${species.meta.total}</h2>`);
@@ -457,8 +470,10 @@ function displayNextLast() {
     <h2>Last: ${species.links.last}</h2></li>`);
     }
 
+
 function queryCommonNames() {
     $('#common-names').on('submit', function(event) {
+        $('#results-list').empty();
         event.preventDefault();
         commonNames(species);
     });

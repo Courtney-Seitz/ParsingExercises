@@ -453,13 +453,12 @@ const species = {
 
 function commonNames(species) {
 
-    let html = "";
+    let html = '';
     $.each(species.data, function(i, elem){
-        html += "<ul><li><strong>Common Name:</strong> "+species.data[i].common_name+"</li></ul>"; 
+        html += '<ul><li><strong>Common Name:</strong> '+species.data[i].common_name+'</li></ul>'; 
     }); 
     
-    $("#results-list").html(html);
-
+    $('#results-list').html(html);
 }
 
 function displayDataTotal() {

@@ -452,14 +452,15 @@ const species = {
 // }
 
 function commonNames(species) {
-    $.each(species.data, function(i, el) {
-        $('#results-list').append(`<li><p><strong>Common Name: </strong>${species.data[i].common_name}</p></li>`);
-        
-        console.log(el.common_name);
-        console.log(species.data[i].common_name);
-        
-        })
-    }
+
+    let html = "";
+    $.each(species.data, function(i, elem){
+        html += "<ul><li><strong>Common Name:</strong> "+species.data[i].common_name+"</li></ul>"; 
+    }); 
+    
+    $("#results-list").html(html);
+
+}
 
 function displayDataTotal() {
     return $('#total').html(`<h2>Total: ${species.meta.total}</h2>`);
@@ -470,13 +471,13 @@ function displayNextLast() {
     <h2>Last: ${species.links.last}</h2></li>`);
     }
 
-
 function queryCommonNames() {
     $('#common-names').on('submit', function(event) {
-        $('#results-list').empty();
+        // $('#results-list').empty();
+
         event.preventDefault();
         commonNames(species);
-    });
+            });
 }
 
 function queryDataTotal() {
